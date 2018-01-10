@@ -1,4 +1,5 @@
 class HousesController < ApplicationController
+	before_action :set_house, only: %i[show edit update destroy]
 
 	def index
    @houses = House.all
@@ -6,7 +7,6 @@ class HousesController < ApplicationController
 
 
   def show
-  	@house = House.find(params[:id])
   end
 
 
@@ -16,7 +16,6 @@ class HousesController < ApplicationController
 
 
   def edit
-  	@house = House.find(params[:id])
   end
 
 
@@ -32,8 +31,6 @@ class HousesController < ApplicationController
 
 
   def update
-  	@house = House.find(params[:id])
-
   	if @house.update(house_params)
       flash[:success] = "編集に成功しました。"
       redirect_to root_url
@@ -44,7 +41,7 @@ class HousesController < ApplicationController
 
 
   def destroy
-  	House.find(params[:id]).destroy
+  	@house.destroy
   	redirect_to root_url
   end
 
@@ -67,4 +64,8 @@ class HousesController < ApplicationController
   def house_params
   	params.require(:house).permit(:firstname, :lastname, :city, :num_of_people, :has_child)
   end
+
+	def set_house
+		@house = House.find(params[:id])
+	end
 end
