@@ -2,21 +2,17 @@
 
 <%= form_tag({controller: "houses", action: "import_csv", method: "post"}, {multipart: true}) do %>
   <div class="field">
-    <%= label_tag " csvファイルを選択する" %><br>
+    <%= label_tag " 家庭情報関連のcsvファイルを選択してください" %><br>
     <%= file_field_tag :csv_file %>
-  </div>
-
-  <div class="actions">
-    <%= submit_tag "CSVファイルを読み込む"%>
-  </div>
+    →
+　　<%= submit_tag "CSVファイルを読み込む"%>
+　</div>
 <% end %>
 </br>
-<%= link_to 'create new house', new_house_path  %>
+<%= link_to '家庭情報作成', new_house_path  %>
 </br>
 </br>
-click 'show' to see charts
-</br>
-<%=  link_to 'エネルギー一覧はこちら', energies_path %>
+<%=  link_to '(エネルギー一覧はこちら)', energies_path %>
 </br>
 </br>
 <table>
@@ -41,9 +37,9 @@ click 'show' to see charts
         <td><%= house.city %></td>
         <td><%= house.num_of_people %></td>
         <td><%= house.has_child %></td>
-        <td><%= link_to 'Show', house %></td>
-        <td><%= link_to 'Edit', edit_house_path(house) %></td>
-        <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', house %></td>
+        <td><%= link_to '編集', edit_house_path(house) %></td>
+        <td><%= link_to '削除', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
