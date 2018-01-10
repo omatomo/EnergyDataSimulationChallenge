@@ -6,7 +6,7 @@ class EnergiesController < ApplicationController
 
 
 	def show
-		@energy = Energy.find(params[:id])
+		#@energy = Energy.find(params[:id])
 	end
 
 
@@ -55,9 +55,9 @@ class EnergiesController < ApplicationController
 
   def import_csv
   	if Energy.import_csv(params[:csv_file])
-  		redirect_to root_url, notice: 'csvの読み込みに成功しました。'
+  		redirect_to energies_path, notice: 'csvの読み込みに成功しました。'
   	else
-  		redirect_to root_url, notice: 'csvの読み込みに失敗しました。'
+  		redirect_to energies_path, notice: 'csvの読み込みに失敗しました。'
   	end
   end
 
