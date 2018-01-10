@@ -24,7 +24,7 @@ class EnergiesController < ApplicationController
 		 @energy = Energy.new(energy_params)
 
 		 if @energy.save
-			 redirect_to root_url
+			 redirect_to energies_path
 		 else
 			 render 'new'
 		 end
@@ -54,7 +54,7 @@ class EnergiesController < ApplicationController
 
 
   def import_csv
-  	if House.import_csv(params[:csv_file])
+  	if Energy.import_csv(params[:csv_file])
   		redirect_to root_url, notice: 'csvの読み込みに成功しました。'
   	else
   		redirect_to root_url, notice: 'csvの読み込みに失敗しました。'
