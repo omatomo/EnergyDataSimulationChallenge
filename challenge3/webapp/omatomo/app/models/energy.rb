@@ -17,7 +17,7 @@ class Energy < ApplicationRecord
       energy.month             = row[4]
       energy.temperature       = row[5]
       energy.daylight          = row[6]
-      energy.enegy_production  = row[7]
+      energy.energy_production  = row[7]
 
       energy.save
     end
