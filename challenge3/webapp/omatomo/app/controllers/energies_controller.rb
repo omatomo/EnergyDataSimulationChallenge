@@ -1,4 +1,5 @@
 class EnergiesController < ApplicationController
+	before_action :set_energy, only: %i[show edit update destroy]
 
 	def index
 		@energies = Energy.all
@@ -6,7 +7,6 @@ class EnergiesController < ApplicationController
 
 
 	def show
-		@energy = Energy.find(params[:id])
 	end
 
 
@@ -16,7 +16,6 @@ class EnergiesController < ApplicationController
 
 
 	def edit
-		@energy = Energy.find(params[:id])
 	end
 
 
@@ -32,8 +31,6 @@ class EnergiesController < ApplicationController
 
 
 	def update
-		@energy = Energy.find(params[:id])
-
 		if @energy.update(energy_params)
       flash[:success] = "編集に成功しました。"
       redirect_to root_url
@@ -44,7 +41,7 @@ class EnergiesController < ApplicationController
 
 
 	def destroy
-		@energy = Energy.find(params[:id]).destroy
+		@energy.destroy
 		redirect_to energies_path
 	end
 
@@ -66,5 +63,9 @@ class EnergiesController < ApplicationController
 
 	def energy_params
 		params.require(:energy).permit(:label, :house_id, :year, :month, :temperature, :daylight, :energy_production)
+	end
+
+	def set_energy
+		@energy = Energy.find(params[:id])
 	end
 end
