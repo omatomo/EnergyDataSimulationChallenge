@@ -1,7 +1,7 @@
 require 'csv'
 require 'kconv'
 class House < ApplicationRecord
-	has_many :energiess
+	has_many :energies
 
 	validates :firstname, presence: true
 	validates :lastname,  presence: true
