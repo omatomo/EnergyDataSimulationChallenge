@@ -6,7 +6,7 @@ class EnergiesController < ApplicationController
 
 
 	def show
-		#@energy = Energy.find(params[:id])
+		@energy = Energy.find(params[:id])
 	end
 
 
