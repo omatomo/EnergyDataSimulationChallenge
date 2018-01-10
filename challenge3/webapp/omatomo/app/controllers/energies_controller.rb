@@ -44,6 +44,8 @@ class EnergiesController < ApplicationController
 
 
 	def destroy
+		@energy = Energy.find(params[:id]).destroy
+		redirect_to energies_path
 	end
 
 
