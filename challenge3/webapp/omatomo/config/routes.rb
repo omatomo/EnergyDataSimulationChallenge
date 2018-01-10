@@ -6,4 +6,11 @@ Rails.application.routes.draw do
   		post 'import_csv'
   	end
   end
+
+  resources :energies do
+    collection do
+      get  'import_csv_new'
+      post 'import_csv'
+    end
+  end
 end
