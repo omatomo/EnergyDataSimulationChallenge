@@ -22,10 +22,24 @@ class EnergiesController < ApplicationController
 
 	def create
 		 @energy = Energy.new(energy_params)
+
+		 if @energy.save
+			 redirect_to root_url
+		 else
+			 render 'new'
+		 end
 	end
 
 
 	def update
+		@energy = Energy.find(params[:id])
+
+		if @energy.update(energy_params)
+      flash[:success] = "編集に成功しました。"
+      redirect_to root_url
+  	else
+  	 render 'edit'
+    end
 	end
 
 
@@ -49,5 +63,6 @@ class EnergiesController < ApplicationController
 	private
 
 	def energy_params
+		params.require(:energy).permit(:label, :house_id, :year, :month, :temperature, :daylight, :energy_production)
 	end
 end
