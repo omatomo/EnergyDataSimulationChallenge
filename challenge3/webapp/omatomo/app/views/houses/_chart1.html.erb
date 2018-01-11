@@ -1,0 +1,106 @@
+<div class="house_chart">
+  <span>グラフ1</span>
+  <div id="chart"></div>
+</div>
+
+<script type="text/javascript">
+var chart = c3.generate({
+    data: {
+        x: 'x',
+        columns: [
+            ['x', '2011-7-1','2011-8-1','2011-9-1','2011-10-1','2011-11-1','2011-12-1','2012-1-1','2012-2-1','2012-3-1','2012-4-1','2012-5-1','2012-6-1','2012-7-1','2012-8-1','2012-9-1','2012-10-1','2012-11-1','2012-12-1','2013-1-1','2013-2-1','2013-3-1','2013-4-1','2013-5-1'],
+            ['日光', <%= @house.energies.find_by(year: 2011, month: 7).daylight %>,
+                     <%= @house.energies.find_by(year: 2011, month: 8).daylight %>,
+                     <%= @house.energies.find_by(year: 2011, month: 9).daylight %>,
+                     <%= @house.energies.find_by(year: 2011, month: 10).daylight %>,
+                     <%= @house.energies.find_by(year: 2011, month: 11).daylight %>,
+                     <%= @house.energies.find_by(year: 2011, month: 12).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 1).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 2).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 3).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 4).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 5).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 6).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 7).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 8).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 9).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 10).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 11).daylight %>,
+                     <%= @house.energies.find_by(year: 2012, month: 12).daylight %>,
+                     <%= @house.energies.find_by(year: 2013, month: 1).daylight %>,
+                     <%= @house.energies.find_by(year: 2013, month: 2).daylight %>,
+                     <%= @house.energies.find_by(year: 2013, month: 3).daylight %>,
+                     <%= @house.energies.find_by(year: 2013, month: 4).daylight %>,
+                     <%= @house.energies.find_by(year: 2013, month: 5).daylight %>,
+                     <%= @house.energies.find_by(year: 2013, month: 6).daylight %>],
+
+              ['気温', <%= @house.energies.find_by(year: 2011, month: 7).temperature %>,
+                      <%= @house.energies.find_by(year: 2011, month: 8).temperature %>,
+                      <%= @house.energies.find_by(year: 2011, month: 9).temperature %>,
+                      <%= @house.energies.find_by(year: 2011, month: 10).temperature %>,
+                      <%= @house.energies.find_by(year: 2011, month: 11).temperature %>,
+                      <%= @house.energies.find_by(year: 2011, month: 12).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 1).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 2).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 3).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 4).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 5).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 6).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 7).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 8).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 9).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 10).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 11).temperature %>,
+                      <%= @house.energies.find_by(year: 2012, month: 12).temperature %>,
+                      <%= @house.energies.find_by(year: 2013, month: 1).temperature %>,
+                      <%= @house.energies.find_by(year: 2013, month: 2).temperature %>,
+                      <%= @house.energies.find_by(year: 2013, month: 3).temperature %>,
+                      <%= @house.energies.find_by(year: 2013, month: 4).temperature %>,
+                      <%= @house.energies.find_by(year: 2013, month: 5).temperature %>,
+                      <%= @house.energies.find_by(year: 2013, month: 6).temperature %>],
+                      ],
+
+    },
+    axis: {
+        x: {
+            type: 'timeseries',
+            tick: {
+                format: '%Y-%m'
+            }
+        }
+    }
+});
+setTimeout(function () {
+    chart.load({
+        columns: [
+          ['エネルギー生産量', <%= @house.energies.find_by(year: 2011, month: 7).energy_production %>,
+                  <%= @house.energies.find_by(year: 2011, month: 8).energy_production %>,
+                  <%= @house.energies.find_by(year: 2011, month: 9).energy_production %>,
+                  <%= @house.energies.find_by(year: 2011, month: 10).energy_production %>,
+                  <%= @house.energies.find_by(year: 2011, month: 11).energy_production %>,
+                  <%= @house.energies.find_by(year: 2011, month: 12).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 1).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 2).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 3).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 4).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 5).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 6).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 7).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 8).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 9).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 10).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 11).energy_production %>,
+                  <%= @house.energies.find_by(year: 2012, month: 12).energy_production %>,
+                  <%= @house.energies.find_by(year: 2013, month: 1).energy_production %>,
+                  <%= @house.energies.find_by(year: 2013, month: 2).energy_production %>,
+                  <%= @house.energies.find_by(year: 2013, month: 3).energy_production %>,
+                  <%= @house.energies.find_by(year: 2013, month: 4).energy_production %>,
+                  <%= @house.energies.find_by(year: 2013, month: 5).energy_production %>,
+                  <%= @house.energies.find_by(year: 2013, month: 6).energy_production %>]
+        ]
+    });
+}, 1000);
+
+
+
+</script>

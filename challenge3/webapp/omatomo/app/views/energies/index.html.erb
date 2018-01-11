@@ -1,0 +1,52 @@
+<h1>Listing energies</h1>
+
+<%= form_tag({controller: "energies", action: "import_csv", method: "post"}, {multipart: true}) do %>
+  <div class="field">
+    <%= label_tag "energy関連のCSVファイルを選択してください" %><br>
+    <%= file_field_tag :csv_file %>
+    →
+    <%= submit_tag "CSVファイルを読み込む"%>
+  </div>
+<% end %>
+</br>
+<%= link_to 'エネルギー情報作成', new_energy_path %>
+</br>
+</br>
+<%=  link_to '(家庭情報一覧はこちら)', houses_path %>
+</br>
+</br>
+</br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>House</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Temperature</th>
+      <th>Daylight</th>
+      <th>Energy production</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @energies.each do |energy| %>
+      <tr>
+        <td><%= energy.label %></td>
+        <td><%= energy.house_id %></td>
+        <td><%= energy.year %></td>
+        <td><%= energy.month %></td>
+        <td><%= energy.temperature %></td>
+        <td><%= energy.daylight %></td>
+        <td><%= energy.energy_production %></td>
+        <td><%= link_to '詳細', energy %></td>
+        <td><%= link_to '編集', edit_energy_path(energy) %></td>
+        <td><%= link_to '削除', energy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
